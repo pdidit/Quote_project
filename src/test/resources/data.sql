@@ -1,0 +1,1 @@
+INSERT INTO Client(first_name, last_name, eircode, email, phone_number) VALUES('Padraic', 'Meehan', 'H91YC2Y', 'padraic.meehan@gmail.com', 0872741283);

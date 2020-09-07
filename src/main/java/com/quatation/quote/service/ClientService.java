@@ -2,14 +2,15 @@ package com.quatation.quote.service;
 
 import com.quatation.quote.domain.Client;
 import com.quatation.quote.repos.ClientRepository;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
-import java.lang.ref.Cleaner;
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class ClientService {
 
     @Autowired
@@ -19,7 +20,7 @@ public class ClientService {
 
     public Page<Client> getPageClient(Pageable pageable) { return clientRepository.findAll(pageable); }
 
-    public Client getClient(Integer ID) { return clientRepository.getOne(ID); }
+    public Optional<Client> getClient(Integer ID) { return clientRepository.findById(ID); }
 
     public Client createClient(Client client) { return  clientRepository.saveAndFlush(client); }
 

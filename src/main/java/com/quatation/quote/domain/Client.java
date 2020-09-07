@@ -1,22 +1,24 @@
 package com.quatation.quote.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "CLIENT")
 public class Client {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer ID;
 
     @Column
-   //@NotNull(message = "client.missing.first.name")
+    @NotNull(message = "client.missing.first.name")
     private String firstName;
 
     @Column
-    //@NotNull(message = "client.missing.surname")
+    @NotNull(message = "client.missing.surname")
     private String lastName;
 
     @Column
@@ -29,16 +31,16 @@ public class Client {
     private String thirdLineAddress;
 
     @Column
-    //@NotNull(message = "client.missing.eircode")
+    @NotNull(message = "client.missing.eircode")
     private String eircode;
 
     @Column
-    //@NotNull(message = "client.missing.phone.number")
+    @NotNull(message = "client.missing.phone.number")
     private Integer phoneNumber;
 
     @Column
-    //@NotNull(message = "client.missing.email")
-    //@Email
+    @NotNull(message = "client.missing.email")
+    @Email
     private String email;
 
     public Integer getPhoneNumber() {
@@ -104,18 +106,6 @@ public class Client {
 
     public void setID(Integer ID) {
         this.ID = ID;
-    }
-
-    public Client(Integer ID, String firstName, String lastName, String firstLineAddress, String secondLineAddress, String thirdLineAddress, String eircode, Integer phoneNumber, String email) {
-        this.ID = ID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.firstLineAddress = firstLineAddress;
-        this.secondLineAddress = secondLineAddress;
-        this.thirdLineAddress = thirdLineAddress;
-        this.eircode = eircode;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
     }
 
     public String getEmail() {

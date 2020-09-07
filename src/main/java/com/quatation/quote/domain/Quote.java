@@ -6,10 +6,10 @@ import java.util.List;
 @Entity
 public class Quote {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer ID;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Client client;
 
     @Column
@@ -29,17 +29,6 @@ public class Quote {
 
     @Column
     private String comments;
-
-    public Quote(Integer ID, Client client, String quoteAddressFirstLine, String quoteAddressSecondLine, String quoteAddressThirdLine, List<Job> jobs, Double quoteTotal, String comments) {
-        this.ID = ID;
-        this.client = client;
-        this.quoteAddressFirstLine = quoteAddressFirstLine;
-        this.quoteAddressSecondLine = quoteAddressSecondLine;
-        this.quoteAddressThirdLine = quoteAddressThirdLine;
-        this.jobs = jobs;
-        this.quoteTotal = quoteTotal;
-        this.comments = comments;
-    }
 
     public Integer getID() {
         return ID;

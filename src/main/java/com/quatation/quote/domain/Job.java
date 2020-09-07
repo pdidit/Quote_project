@@ -1,14 +1,11 @@
 package com.quatation.quote.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Job {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer ID;
 
     @Column
@@ -19,13 +16,6 @@ public class Job {
 
     @Column
     private String description;
-
-    public Job(Integer ID, String jobTitle, double jobPrice, String description) {
-        this.ID = ID;
-        this.jobTitle = jobTitle;
-        this.jobPrice = jobPrice;
-        this.description = description;
-    }
 
     public Integer getID() {
         return ID;

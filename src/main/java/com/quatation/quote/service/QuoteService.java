@@ -1,14 +1,16 @@
 package com.quatation.quote.service;
 
-import com.quatation.quote.domain.Client;
 import com.quatation.quote.domain.Quote;
 import com.quatation.quote.repos.QuoteRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class QuoteService {
 
     @Autowired
@@ -18,7 +20,7 @@ public class QuoteService {
 
     public Page<Quote> getPageQuotes(Pageable pageable) { return quoteRespository.findAll(pageable); }
 
-    public Quote getQuote(Integer ID) { return quoteRespository.getOne(ID); }
+    public Optional<Quote> getQuote(Integer ID) { return quoteRespository.findById(ID); }
 
     public Quote createQuote(Quote quote) { return quoteRespository.saveAndFlush(quote); }
 
