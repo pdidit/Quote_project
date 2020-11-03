@@ -6,3 +6,7 @@ INSERT INTO job(job_title, description, job_price) VALUES('Roofing', 'Placing ti
 INSERT INTO job(job_title, description, job_price) VALUES('Flooring', 'Placing flooring on the ground', 560.00);
 INSERT INTO job(job_title, description, job_price) VALUES('Walls', 'Setting up walls for first Fixings', 1000.00);
 
+
+INSERT INTO quote(client_id, quote_total, comments, quote_address_first_line) VALUES(1, 500.00, 'This is test comment', 'galway');
+
+INSERT INTO quote_jobs(quote_id, jobs_id) VALUES(1, 1);
