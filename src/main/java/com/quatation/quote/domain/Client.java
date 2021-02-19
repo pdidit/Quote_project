@@ -1,13 +1,11 @@
 package com.quatation.quote.domain;
 
-
 import javax.persistence.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "CLIENT")
 public class Client {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -36,18 +34,18 @@ public class Client {
 
     @Column
     @NotNull(message = "client.missing.phone.number")
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     @Column
     @NotNull(message = "client.missing.email")
     @Email
     private String email;
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -96,16 +94,8 @@ public class Client {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public Integer getID() {
         return ID;
-    }
-
-    public void setID(Integer ID) {
-        this.ID = ID;
     }
 
     public String getEmail() {

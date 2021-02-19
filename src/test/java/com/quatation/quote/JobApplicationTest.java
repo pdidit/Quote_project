@@ -51,7 +51,13 @@ public class JobApplicationTest {
         Job job = testRestTemplate.getForObject(url, Job.class);
         assertAll(
                 () -> assertNotNull(job),
-                () -> assertEquals("Roofing", job.getJobTitle())
+                () -> {
+                    assert job != null;
+                    assertEquals("Roofing", job.getJobTitle());
+                    assertEquals("Placing titles or slates of your choicing on the roof", job.getDescription());
+                    assertEquals(500.00, job.getJobPrice());
+                    assertEquals(1, job.getID());
+                }
         );
     }
 }

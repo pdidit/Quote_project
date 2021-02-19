@@ -1,7 +1,7 @@
 package com.quatation.quote.service;
 
 import com.quatation.quote.domain.Quote;
-import com.quatation.quote.repos.QuoteRespository;
+import com.quatation.quote.repos.QuoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,23 +14,23 @@ import java.util.Optional;
 public class QuoteService {
 
     @Autowired
-    private QuoteRespository quoteRespository;
+    private QuoteRepository quoteRepository;
 
-    public List<Quote> getAllQuotes(){ return quoteRespository.findAll(); }
+    public List<Quote> getAllQuotes(){ return quoteRepository.findAll(); }
 
-    public Page<Quote> getPageQuotes(Pageable pageable) { return quoteRespository.findAll(pageable); }
+    public Page<Quote> getPageQuotes(Pageable pageable) { return quoteRepository.findAll(pageable); }
 
-    public Optional<Quote> getQuote(Integer ID) { return quoteRespository.findById(ID); }
+    public Optional<Quote> getQuote(Integer ID) { return quoteRepository.findById(ID); }
 
-    public Quote createQuote(Quote quote) { return quoteRespository.saveAndFlush(quote); }
+    public Quote createQuote(Quote quote) { return quoteRepository.saveAndFlush(quote); }
 
-    public void deleteQuote(Integer ID) { quoteRespository.deleteById(ID); }
+    public void deleteQuote(Integer ID) { quoteRepository.deleteById(ID); }
 
     public Quote updateClient(Quote quote){
 
         //need to finish off.
-        Quote existingQuote = quoteRespository.getOne(quote.getID());
+        Quote existingQuote = quoteRepository.getOne(quote.getID());
 
-        return quoteRespository.saveAndFlush(quote);
+        return quoteRepository.saveAndFlush(quote);
     }
 }

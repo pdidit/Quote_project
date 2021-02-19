@@ -21,10 +21,6 @@ public class Job {
         return ID;
     }
 
-    public void setID(Integer ID) {
-        this.ID = ID;
-    }
-
     public String getJobTitle() {
         return jobTitle;
     }

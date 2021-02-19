@@ -1,0 +1,9 @@
+create table client (id  serial not null, eircode varchar(255) not null, email varchar(255) not null, first_line_address varchar(255), first_name varchar(255) not null, last_name varchar(255) not null, phone_number varchar(255) not null, second_line_address varchar(255), third_line_address varchar(255), primary key (id))
+create table job (id  serial not null, description varchar(255), job_price float8, job_title varchar(255), primary key (id))
+create table quote (id  serial not null, comments varchar(255), quote_address_first_line varchar(255), quote_address_second_line varchar(255), quote_address_third_line varchar(255), quote_total float8, client_id int4, primary key (id))
+create table quote_jobs (quote_id int4 not null, jobs_id int4 not null)
+alter table quote_jobs drop constraint UK_c52gvy5vqamxwmaps9it7d3ne
+alter table quote_jobs add constraint UK_c52gvy5vqamxwmaps9it7d3ne unique (jobs_id)
+alter table quote add constraint FKau0dqte125fn24anh3k8014eu foreign key (client_id) references client
+alter table quote_jobs add constraint FKpvkkbllfcwm8txy2xldg7oqd3 foreign key (jobs_id) references job
+alter table quote_jobs add constraint FKo4isb7bjenmv1xvg58yi0hoa4 foreign key (quote_id) references quote

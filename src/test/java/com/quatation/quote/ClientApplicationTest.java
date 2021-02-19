@@ -51,7 +51,18 @@ public class ClientApplicationTest {
         Client client = testRestTemplate.getForObject(url, Client.class);
         assertAll(
                 () -> assertNotNull(client),
-                () -> assertEquals("Padraic", client.getFirstName())
+                () -> {
+                    assert client != null;
+                    assertEquals(1, client.getID());
+                    assertEquals("Padraic", client.getFirstName());
+                    assertEquals("Meehan", client.getLastName());
+                    assertEquals("H91YC2Y", client.getEircode());
+                    assertNull(client.getFirstLineAddress());
+                    assertNull(client.getSecondLineAddress());
+                    assertNull(client.getThirdLineAddress());
+                    assertEquals("0872741283", client.getPhoneNumber());
+                    assertEquals("padraic.meehan@gmail.com", client.getEmail());
+                }
         );
     }
 }
